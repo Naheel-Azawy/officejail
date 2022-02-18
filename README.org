@@ -1,0 +1,48 @@
+* officejail
+  Automated script to install and run Microsoft Office using firejail and wine.
+
+** Why?
+   - Using wine requires bunch of configurations that I always forget
+   - Using something like playonlinux requires too many mouse clicks
+   - Closed-source programs must at least be sandboxed; firejail is used for that here
+   - There is no point of giving office programs network access; firejail blocks network
+   - There is no point of giving office programs full access over my filesystem; documents are copied to the sandbox and updated back if needed with backups automatically created.
+
+** Dependencies
+   - firejail
+   - wine
+
+** Installation
+   To install this script
+   #+begin_src shell-script
+     make install
+   #+end_src
+
+   To actually install office
+   #+begin_src shell-script
+     msoffice 2010 install /path/to/installer/dir
+   #+end_src
+
+   *Be sure to use a genuine version of Microsoft Office*
+
+** Usage
+   #+begin_src fundamental
+     usage: msoffice [year] [cmd] [file]
+     examples:
+      $ msoffice 2003 install /path/to/installer
+      $ msoffice 2003 uninstall
+      $ msoffice 2007 word hello.docx
+      $ msoffice 2010 hello.xlsx
+      $ msoffice hello.pptx
+      $ msoffice w
+      $ msoffice 2010 set-default
+      $ msoffice 2007 path
+   #+end_src
+
+** Supported versions
+   Office 2003, 2007, and 2010 seem to be working well.
+   I remember getting office 2013 to work at some point of time. But it doesn't seems to be working now. Office 2019 doesn't seems to be working too.
+   But that might change at some point in the future.
+
+** License
+   GPL3
